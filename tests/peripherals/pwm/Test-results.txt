@@ -7,4 +7,7 @@ Consumption of this test on S2*
 40 mA/h
 38 mA/h without the LED connected
 
+Consumption on ESP32
+60 to 70 mA/h
+
 *NOTE: measured with 5V USB so is passing through the voltage regulator

@@ -4,7 +4,7 @@ Testing Arduino-framework in ESP32-S2 other folders may include ESP-IDF snippets
 
 wifi/mdns  ![Works](/svg/ok.svg)
 
-wifi/server  ![Works](/svg/ok.svg)
+wifi/server  ![Not stable](/svg/no.svg) [Test results](/tests/wifi/server/Test-results.txt)
 
 peripherals/pwm  ![Works](/svg/ok.svg) [Test results](/tests/peripherals/pwm/Test-results.txt)
 
