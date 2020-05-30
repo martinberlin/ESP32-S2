@@ -1,0 +1,10 @@
+ESP32S2:
+
+Working as expected I can see a green LED working with PWM.
+
+https://twitter.com/martinfasani/status/1266639388743733248
+Consumption of this test on S2*
+40 mA/h
+38 mA/h without the LED connected
+
+*NOTE: measured with 5V USB so is passing through the voltage regulator

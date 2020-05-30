@@ -6,6 +6,8 @@ wifi/mdns  ![Works](/svg/ok.svg)
 
 wifi/server  ![Works](/svg/ok.svg)
 
+peripherals/pwm  ![Works](/svg/ok.svg) [Test results](/peripherals/pwm/Test-results.txt)
+
 
 REF:
 ![Works](/svg/ok.svg) Marks that works as expected | ![Fails](/svg/no.svg) Something failed
