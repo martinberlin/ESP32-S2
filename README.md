@@ -8,9 +8,7 @@ wifi/server  ![Works](/svg/ok.svg)
 
 
 REF:
-![Works](/svg/ok.svg) Marks that works as expected
-
-![Fails](/svg/no.svg) Marks that something failed
+![Works](/svg/ok.svg) Marks that works as expected | ![Fails](/svg/no.svg) Something failed
 
 ### Select your test
 
