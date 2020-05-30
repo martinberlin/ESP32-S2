@@ -15,11 +15,11 @@ That will select the src/main.cpp of the folder test/wifi/server and compile it.
 
 ESP_PROG | ESP32S2
 
-MTDI --> IO41
-MTDO --> IO40
-MTCK --> IO39
-MTMS --> IO42
-GND --> GND
+    MTDI --> IO41
+    MTDO --> IO40
+    MTCK --> IO39
+    MTMS --> IO42
+    GND --> GND
 
 thanks to @meltdown03
 
