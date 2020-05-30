@@ -52,3 +52,4 @@ https://github.com/chegewara/arduino-as-component/blob/master/adafruit_ili9341/m
 
 Board used for this tests:
 [ESP32-S2 Saola board](https://twitter.com/martinfasani/status/1266352305575727105)
+[ESP32 tinyPICO](https://www.tinypico.com)

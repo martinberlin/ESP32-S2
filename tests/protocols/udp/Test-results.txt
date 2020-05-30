@@ -1,0 +1,23 @@
+ESP32S2:
+Works stable.
+As expected I can see a the received UDP packages in the Serial output. Using this Android app to send fast frames from a video:
+http://udpx.fasani.de
+I'm sending packages of about 2Kb of data using udpx app and sending it using Javascript / UDP in a Cordova App.
+
+S2 vs ESP32 in receive speed
+
+Testing receiving 2Kb of data sent by Android I got 12 Frames per second avg in both Chips. 
+I've expected a bit lower framerate in S2 since it has only one Core but for that let's do something more procesor intensive like receive and decompress (Coming in next tests)
+
+
+
+Consumption of this test on S2*
+100 mA/h Almost constant 100 milliamps per hour, no matter if receiving or not.
+
+
+Consumption on ESP32
+About 85 to 90 mA/h. When receiving from 120 and spikes up to 150 mA/h 
+
+Receiving consumes between 40 to 50% more than with S2 one LX7 core.
+
+*NOTE: measured with 5V USB so is passing through the voltage regulator
