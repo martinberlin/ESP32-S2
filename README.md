@@ -3,9 +3,13 @@
 Testing Arduino-framework in ESP32-S2 other folders may include ESP-IDF snippets. Results so far:
 
 wifi/mdns  ![Works](/svg/ok.svg)
+
 wifi/server  ![Works](/svg/ok.svg)
 
+
+REF:
 ![Works](/svg/ok.svg) Marks that works as expected
+
 ![Fails](/svg/no.svg) Marks that something failed
 
 ### Select your test
