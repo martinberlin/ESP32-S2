@@ -8,6 +8,8 @@ wifi/server  ![Not stable](/svg/no.svg) [Test results](/tests/wifi/server/Test-r
 
 peripherals/pwm  ![Works](/svg/ok.svg) [Test results](/tests/peripherals/pwm/Test-results.txt)
 
+peripherals/I2S Not sure, many things changed in 4.0 [Neopixels library does not compile](https://github.com/martinberlin/Remora/issues/8). A lot of libraries will need refactoring to make things work on S2.
+
 
 REF:
 ![Works](/svg/ok.svg) Marks that works as expected | ![Fails](/svg/no.svg) Something failed
