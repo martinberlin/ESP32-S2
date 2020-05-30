@@ -9,21 +9,28 @@ hence depending on the actual image, can be more or less compressed.
 S2 vs ESP32 in receive speed
 This tests where run with exactly the same Firmware and same settings (outputUdpPacketsInSerial = false so just prints U+first Byte in HEX)
 
-1. Between 200 and 300 bytes Zlib packet received:
-Testing receiving this fluctuanting size of data sent by Android I got 12 Frames per second avg in both Chips. 
-I've expected a bit lower framerate in S2 since it has only one Core but for that let's do something more procesor intensive like receive and decompress (Coming in next tests)
+1. 66 bytes
+S2: AVG framerate 21 FPS
+ESP32: AVG framerate 28 FPS
 
-2. 606 bytes packages
-S2: AVG framerate 18 packets per second (FPS)
-ESP32: AVG framerate 25 FPS
-
-3. 306 bytes 
+2. 306 bytes 
 S2: AVG framerate 18 FPS
 ESP32: AVG framerate 25 FPS
 
-4. 66 bytes
-S2: AVG framerate 21 FPS
-ESP32: AVG framerate 28 FPS
+3. 606 bytes packages
+S2: AVG framerate 18 packets per second (FPS)
+ESP32: AVG framerate 25 FPS
+
+4. Between 200 and 300 bytes Zlib packet received:
+Testing receiving this variable size of compressed data sent by Android I got 12 Frames per second avg in both Chips. 
+I've expected a bit lower framerate in S2 since it has only one Core but for that let's do something more procesor intensive like receive and decompress (Coming in next tests)
+
+- - - - - - - - - - - - - - - - - - 
+2nd test - Remove all serial output except FPS output. Adjust Android app to send at 80 FPS (It's never real with javascript)
+Testing here with another kind of video that has very different and variable data (Not sure if it influences)
+
+Results coming soon when I have a clean internet at home (Without video streaming)
+
 
 CONCLUSION:
 2 Cores ESP32 beats S2 receiving packages at fast speed per UDP.

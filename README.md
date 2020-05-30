@@ -12,6 +12,15 @@ protocols/udp ![Works](/svg/ok.svg) Working stable. [Test results](/tests/protoc
 
 peripherals/I2S Not sure, could not test yet, many things changed in 4.0 [Neopixels library does not compile](https://github.com/martinberlin/Remora/issues/8). A lot of libraries will need refactoring to make things work on S2. I will try later the [ESP-IDF example on I2S](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/api-reference/peripherals/i2s.html).
 
+Next tests coming: 
+
+Deep-sleep consumption but measuring right, with 3.3 volts, no voltage regulator.
+
+More protocols.
+
+Please note: My Test results are based on benchmarks I do at home sending with my own apps. It's just an indicator and it should not be taken as a statement from my side.
+ESP32-S2 is not about being faster than ESP32. My goal here is to analyze, check if I can help discover bugs, only as a side job to compare and make a small resume of the best features of each. 
+
 
 REF:
 ![Works](/svg/ok.svg) Marks that works as expected | ![Fails](/svg/no.svg) Something failed
