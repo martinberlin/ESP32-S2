@@ -41,7 +41,7 @@ Server seems to be working. I did got a response from S2. But I see some irregul
 
 
 ESP32S2 behaviour:
-Mdns: Does not seem to work
+Mdns: Does not seem to work - Now it's working, needs some seconds to resolve, check mdns example
 $ ping espressif.local
 ping: espressif.local: Name or service not known
 Server is working correctly!

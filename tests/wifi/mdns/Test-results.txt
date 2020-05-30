@@ -1,0 +1,6 @@
+ESP32S2:
+
+Working as expected I can resolve the local mdns host
+
+PING espressif.local (192.168.0.138) 56(84) bytes of data.
+64 bytes from 192.168.0.138 (192.168.0.138): icmp_seq=1 ttl=255 time=55.6 ms
