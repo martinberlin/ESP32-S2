@@ -15,9 +15,10 @@ REF:
 ### Select your test
 
 Just edit platformio.ini and uncomment only one of the src_dir folders to select what example to run:
-#src_dir = tests/1-hello-world
-#src_dir = tests/wifi/1-connect
-src_dir = tests/wifi/server
+
+    #src_dir = tests/1-hello-world
+    #src_dir = tests/wifi/1-connect
+     src_dir = tests/wifi/server
 
 That will select the src/main.cpp of the folder test/wifi/server and compile it. Not ideal but lets you have many different tests under the same codebase.
 
