@@ -1,0 +1,8 @@
+ESP32S2
+0.79 mA/hour in deepsleep. 
+I guess this is the first revision so there is nothing to worry about. 
+But is not at moment a board that you want to plug into a 3.7 V battery and make it wake up every hour.
+
+ESP32
+On a good ESP32 board like tinyPICO.com it’s 0.08 mA/hour 
+That's 10 times less than this S2 version. 
