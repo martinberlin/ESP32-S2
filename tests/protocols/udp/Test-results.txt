@@ -29,11 +29,26 @@ I've expected a bit lower framerate in S2 since it has only one Core but for tha
 2nd test - Remove all serial output except FPS output. Adjust Android app to send at 80 FPS (It's never real with javascript)
 Testing here with another kind of video that has very different and variable data (Not sure if it influences)
 
-Results coming soon when I have a clean internet at home (Without video streaming)
+1. 66 bytes
+   S2: AVG framerate 14 FPS
+ESP32: AVG framerate 15 FPS
 
+2. 306 bytes
+   S2: AVG framerate 13.5 FPS
+ESP32: AVG framerate 14 FPS
+
+3. 606 bytes
+   S2: AVG framerate 13 FPS
+ESP32: AVG framerate 14 FPS
+
+4. 1326 bytes (Close to Max. transport size MTU 1.4Kb)
+   S2: AVG framerate 11 FPS
+ESP32: AVG framerate 12 FPS
 
 CONCLUSION:
 2 Cores ESP32 beats S2 receiving packages at fast speed per UDP.
+
+The AVG where testing reseting the device after each test to avoid contaminating the stored FPS.
 
 Consumption of this test on S2*
 100 mA/h Almost constant 100 milliamps per hour, no matter if receiving or not.

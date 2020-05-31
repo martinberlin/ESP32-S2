@@ -1,25 +1,30 @@
 	
 #include "Arduino.h"
 #include <WiFi.h>
-#include <ESPmDNS.h>  // multicast DNS
 #include <AsyncUDP.h>
 #include <SimpleTimer.h>
+#include <brotli/decode.h>
 
-#define LED_GPIO 16   // Not important
-#define UDP_PORT 1234 // UDP will hear in this port
+#define LED_GPIO 17      // Not important
+#define UDP_PORT 1234    // UDP will hear in this port
+#define BROTLI_DECOMPRESSION_BUFFER 3000
+//#define DEBUG_MODE // Leave it defined first to confirm decompression works
 
-int lostConnectionCount = 0;
-char apName[] = "espressif";
-
+// Note: With small compressed packages it will fail to decompress once in a while
 // Message transport protocol
 AsyncUDP udp;
 SimpleTimer timer;
+TaskHandle_t brotliTask;
 // Let's measure the framerate in 1 second snapshots
 uint8_t timerEachSec = 1;
 uint32_t frameCounter = 0;
 uint32_t frameLastCounter = 0;
 uint32_t frameTimerCalls = 0;
+int lostConnectionCount = 0;
+
 bool outputUdpPacketsInSerial = false;
+uint16_t receivedLength = 0;
+uint16_t decompressionFailed = 0;
 
 void timerCallback(){
   if (frameLastCounter != frameCounter) {
@@ -29,6 +34,45 @@ void timerCallback(){
 
     frameLastCounter = frameCounter;
   } 
+}
+
+// Task sent to the core to decompress + push to Output
+void brTask(void * compressed){  
+  
+  uint8_t *brOutBuffer = new uint8_t[BROTLI_DECOMPRESSION_BUFFER];
+  size_t bufferLength = BROTLI_DECOMPRESSION_BUFFER;
+  BrotliDecoderResult brotli;
+  #ifdef DEBUG_MODE
+    int initMs = micros();
+  #endif
+  brotli = BrotliDecoderDecompress(
+    receivedLength,
+    (const uint8_t *)compressed,
+    &bufferLength,
+    brOutBuffer);
+
+	#ifdef DEBUG_MODE
+  	  int brotliMs = micros()-initMs;
+    #endif
+    if (brotli) {
+      frameCounter++;      
+      // Send the decompressed buffer to Pixel lib
+	  #ifdef DEBUG_MODE
+        int neoMs = micros();
+	  #endif
+
+    #ifdef DEBUG_MODE
+        Serial.printf("Decompressed %u bytes for frame %lu Heap %u\n", bufferLength, frameCounter, ESP.getFreeHeap());
+    #endif
+    } else {
+      decompressionFailed++;
+      if (decompressionFailed%10==0){
+      Serial.printf("Decomp. failed %lu times", decompressionFailed);
+      }
+    }
+    
+    delete brOutBuffer;
+    vTaskDelete(NULL);
 }
 
 void startUdpServer(){
@@ -41,9 +85,16 @@ void startUdpServer(){
 	  
     // Executes on UDP receive and dumps the received packet in Serial
     udp.onPacket([](AsyncUDPPacket packet) {
-     ++frameCounter;
-		 uint16_t receivedLength = packet.length();
+		 receivedLength = packet.length();
      
+     xTaskCreatePinnedToCore(
+                    brTask,        
+                    "uncompress", 
+                    10000,         
+                    packet.data(),   
+                    9,            
+                    &brotliTask,  
+                    0);
      if (outputUdpPacketsInSerial){
       for (uint16_t i = 0; i<=receivedLength; i++){
 					Serial.printf("%x ", packet.data()[i]);
@@ -78,9 +129,7 @@ void gotIP(arduino_event_id_t event) {
     digitalWrite(LED_GPIO, 1);
     Serial.println("Online. Local IP address:");
     Serial.println(WiFi.localIP().toString());
-    MDNS.begin(apName);
-    MDNS.addService("http", "tcp", 80);
-    Serial.println(String(apName)+".local mDns started");
+
     startUdpServer();
 }
 #else  // Then this is an ESP32

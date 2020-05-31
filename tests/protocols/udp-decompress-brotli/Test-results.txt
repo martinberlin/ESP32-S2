@@ -1,0 +1,25 @@
+ESP32S2:
+Works stable.
+As expected I can see a the received UDP packages in the Serial output. Using this Android app to send fast frames from a video:
+http://udpx.fasani.de
+This UDP packages are sent compressed with Brotli and are decompressed in ESP32
+
+S2 vs ESP32 in receive speed
+This tests where run with exactly the same Firmware and same settings (outputUdpPacketsInSerial = false so just prints U+first Byte in HEX)
+
+1. 60/70 bytes (Brotli compressed all in the serie)
+   S2: AVG framerate 4 Frames per second (FPS)
+ESP32: AVG framerate 10 FPS
+
+2. 380/430 bytes 
+   S2: AVG framerate 5 FPS
+ESP32: AVG framerate 9 FPS
+
+3. 850/1000 bytes
+   S2: AVG framerate 3 packets 
+ESP32: AVG framerate 6 FPS
+
+Note: The EPS32 in this test is receiving this variable sized compressed frames.
+Decompressing and adding one to the frame counter.
+
+CONCLUSION:
