@@ -1,0 +1,27 @@
+ESP32S2:
+Works stable and the easy HTTP request log shows the same as ESP32
+
+
+Serial output: 
+
+[V][HTTPClient.cpp:235] beginInternal(): url: http://fs.fasani.de/time.php?tz=Europe/Berlin
+[D][HTTPClient.cpp:276] beginInternal(): host: fs.fasani.de port: 80 url: /time.php?tz=Europe/Berlin
+[D][HTTPClient.cpp:1024] connect():  connected to fs.fasani.de:80
+[V][HTTPClient.cpp:1122] handleHeaderResponse(): RX: 'HTTP/1.1 200 OK'
+[V][HTTPClient.cpp:1122] handleHeaderResponse(): RX: 'Date: Sun, 31 May 2020 07:36:48 GMT'
+[V][HTTPClient.cpp:1122] handleHeaderResponse(): RX: 'Server: Apache/2.4.41 (Amazon) OpenSSL/1.0.2k-fips PHP/7.2.30'
+[V][HTTPClient.cpp:1122] handleHeaderResponse(): RX: 'X-Powered-By: PHP/7.2.30'
+[V][HTTPClient.cpp:1122] handleHeaderResponse(): RX: 'Cache-Control: max-age=600'
+[V][HTTPClient.cpp:1122] handleHeaderResponse(): RX: 'Expires: Sun, 31 May 2020 07:46:48 GMT'
+[V][HTTPClient.cpp:1122] handleHeaderResponse(): RX: 'Connection: keep-alive, Keep-Alive'
+[V][HTTPClient.cpp:1122] handleHeaderResponse(): RX: 'Content-Length: 5'
+[V][HTTPClient.cpp:1122] handleHeaderResponse(): RX: 'Keep-Alive: timeout=5, max=100'
+[V][HTTPClient.cpp:1122] handleHeaderResponse(): RX: 'Content-Type: text/html; charset=UTF-8'
+[V][HTTPClient.cpp:1122] handleHeaderResponse(): RX: ''
+[D][HTTPClient.cpp:1157] handleHeaderResponse(): code: 200
+[D][HTTPClient.cpp:1160] handleHeaderResponse(): size: 5
+http status:200
+[D][HTTPClient.cpp:1294] writeToStreamDataBlock(): connection closed or file end (written: 5).
+[D][HTTPClient.cpp:368] disconnect(): tcp keep open for reuse
+
+The time now is: 09:36

@@ -7,7 +7,7 @@
 
 #define LED_GPIO 17      // Not important
 #define UDP_PORT 1234    // UDP will hear in this port
-#define BROTLI_DECOMPRESSION_BUFFER 3000
+#define BROTLI_DECOMPRESSION_BUFFER 4000
 //#define DEBUG_MODE // Leave it defined first to confirm decompression works
 
 // Note: With small compressed packages it will fail to decompress once in a while

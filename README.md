@@ -12,6 +12,8 @@ protocols/udp ![Works](/svg/ok.svg) Working stable. [Test results](/tests/protoc
 
 protocols/udp-decompress-brotli ![Works](/svg/ok.svg) [Test results](/tests/protocols/udp-decompress-brotli/Test-results.txt)
 
+protocols/http-client ![Works](/svg/ok.svg) Working stable. [Test results](/tests/protocols/http-client/Test-results.txt)
+
 peripherals/I2S Not sure, could not test yet, many things changed in 4.0 [Neopixels library does not compile](https://github.com/martinberlin/Remora/issues/8). A lot of libraries will need refactoring to make things work on S2. I will try later the [ESP-IDF example on I2S](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/api-reference/peripherals/i2s.html).
 
 Next tests coming: 
