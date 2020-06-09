@@ -1,4 +1,18 @@
-## ESP32-S2 tests 
+### Select your test
+
+Just edit platformio.ini and uncomment only one of the src_dir folders to select what example to run:
+
+    #src_dir = tests/1-hello-world
+    #src_dir = tests/wifi/1-connect
+     src_dir = tests/wifi/server
+
+That will select the src/main.cpp of the folder test/wifi/server and compile it. Not ideal but lets you have many different tests under the same codebase.
+
+## ESP32-S2 tests results
+
+Reference: 
+  * ![Works](/svg/ok.svg) Marks that works as expected 
+  * ![Fails](/svg/no.svg) Something failed
 
 Testing Arduino-framework in ESP32-S2 other folders may include ESP-IDF snippets. Results so far:
 
@@ -14,30 +28,24 @@ protocols/udp-decompress-brotli ![Works](/svg/ok.svg) [Test results](/tests/prot
 
 protocols/http-client ![Works](/svg/ok.svg) Working stable. [Test results](/tests/protocols/http-client/Test-results.txt)
 
-peripherals/I2S Not sure, could not test yet, many things changed in 4.0 [Neopixels library does not compile](https://github.com/martinberlin/Remora/issues/8). A lot of libraries will need refactoring to make things work on S2. I will try later the [ESP-IDF example on I2S](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/api-reference/peripherals/i2s.html).
+peripherals/I2S  - Pending test with [Neopixels library](https://github.com/martinberlin/Remora/issues/8)
 
-Next tests coming: 
+peripherals/i2c ![Works](/svg/ok.svg) - Seems to work, but I could not connect my Bosch BMP280 sensor, also not with ESP32 maybe is just broken. Just try the **i2cscanner** and try to connect some I2C device on the right GPIOs
 
-Deep-sleep consumption but measuring right, with 3.3 volts, no voltage regulator.
+peripherals/spi-slave ![Works](/svg/ok.svg) For testing I tried [esp32-spi-slave repository](https://github.com/martinberlin/esp32-spi-slave)
+
+peripherals/spi-master ![Works](/svg/ok.svg) Not tested here but using epaper displays. It works stable and fast just like ESP32
+
+
+**Next tests coming:**
 
 More protocols.
 
-Please note: My Test results are based on benchmarks I do at home sending with my own apps. It's just an indicator and it should not be taken as a statement from my side.
+**Please note**
+
+My Test results are based on benchmarks I do at home sending with my own apps or connecting with the few devices I have on the office. It's just an indicator and it should not be taken as a statement from my side.
 ESP32-S2 is not about being faster than ESP32. My goal here is to analyze, check if I can help discover bugs, only as a side job to compare and make a small resume of the best features of each. 
 
-
-REF:
-![Works](/svg/ok.svg) Marks that works as expected | ![Fails](/svg/no.svg) Something failed
-
-### Select your test
-
-Just edit platformio.ini and uncomment only one of the src_dir folders to select what example to run:
-
-    #src_dir = tests/1-hello-world
-    #src_dir = tests/wifi/1-connect
-     src_dir = tests/wifi/server
-
-That will select the src/main.cpp of the folder test/wifi/server and compile it. Not ideal but lets you have many different tests under the same codebase.
 
 ### ESP-PROG debugging pins
 
