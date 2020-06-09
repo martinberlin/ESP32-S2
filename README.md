@@ -36,6 +36,16 @@ peripherals/spi-slave ![Works](/svg/ok.svg) For testing I tried [esp32-spi-slave
 
 peripherals/spi-master ![Works](/svg/ok.svg) Not tested here but using epaper displays. It works stable and fast just like ESP32
 
+Note about WiFi connection: 
+
+At the point of running this tests I was also compiling and testing other things with the ESP-IDF framework.
+On arduino-espressif32 I find the WiFi generally taking more time to connect but not only on S2 and also in ESP32. Thing like this are common:
+
+    ........[W][WiFiGeneric.cpp:810] _eventCallback(): Reason: 202 - AUTH_FAIL
+    .....................................................................................ESP-ROM:esp32s2-rc4-20191025
+    Build:Oct 25 2019 rst:0x1 (POWERON)
+
+So it does an Auth fail at the beginning even though the credentials are correct. In one case out of 10 it will try to connect and never connect. That's why I usually add a timer and if it does not connect in first 10 seconds I just restart it. Can be my own infrastructure though, just interested to know if someone has experienced the same, if so then just drop me a message.
 
 **Next tests coming:**
 
@@ -73,6 +83,6 @@ Here you can find how to use SPI in arduino (code will works with arduino IDE):
 https://github.com/chegewara/arduino-as-component/blob/master/adafruit_ili9341/main/main.cpp
 
 
-Board used for this tests:
-[ESP32-S2 Saola board](https://twitter.com/martinfasani/status/1266352305575727105)
+**Board used for this tests:** 
+[ESP32-S2 Saola board](https://twitter.com/martinfasani/status/1266352305575727105) vs. 
 [ESP32 tinyPICO](https://www.tinypico.com)
