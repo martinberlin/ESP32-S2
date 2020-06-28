@@ -79,10 +79,14 @@ https://github.com/espressif/arduino-esp32/blob/esp32s2/libraries/WiFi/src/WiFiG
 ### About SPI communication
 
 In ESP32S2 there is no HSPI or VSPI. S2 is using **FSPI** 
-Here you can find how to use SPI in arduino (code will works with arduino IDE):
+Here you can find how to use SPI in arduino:
 https://github.com/chegewara/arduino-as-component/blob/master/adafruit_ili9341/main/main.cpp
 
 
 **Board used for this tests:** 
 [ESP32-S2 Saola board](https://twitter.com/martinfasani/status/1266352305575727105) vs. 
+
 [ESP32 tinyPICO](https://www.tinypico.com)
+
+Please note that this S2 Saola dev boards from Espressif are not optimized for deepsleep low consumption. The Saola S2 consumes on deepsleep 10 times more than Tinypico that has a great **0.08 mA** low consumption when sleeping. So it's in my humble opinion not ready to power something with batteries at the moment. 
+Note that this is because the dev board design itself. S2 should actually consume less than ESP32 looking at the [S2 datasheet](https://www.espressif.com/sites/default/files/documentation/esp32-s2_datasheet_en.pdf)
